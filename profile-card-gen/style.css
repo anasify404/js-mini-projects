@@ -1,0 +1,95 @@
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+      }
+
+      #main {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      form {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 600px;
+        height: 100%;
+        background-color: rgb(72, 154, 176);
+        gap: 10px;
+      }
+
+      form label {
+        width: 250px;
+        text-align: center;
+      }
+      input {
+        margin: 5px;
+        width: 250px;
+        height: 30px;
+        background-color: blanchedalmond;
+        border-radius: 5px;
+      }
+
+      #profile-section {
+        flex: 1;
+        display: flex;
+        flex-wrap: wrap;
+        height: 100%;
+        gap: 20px;
+        padding: 25px;
+        align-items: flex-start;
+        overflow: auto;
+        background-color: blanchedalmond;
+      }
+
+      .profileCard {
+        margin: 10px;
+        padding: 1cqb;
+        width: 300px;
+        max-height: 600px;
+        background-color: rgb(246, 192, 66);
+        border: 2px solid black;
+        border-radius: 20px;
+        overflow: hidden;
+      }
+
+      .demoCard {
+        width: 50px;
+        padding: 2px;
+        text-align: center;
+        background-color: red;
+        color: antiquewhite;
+        border-radius: 0 20px;
+      }
+
+      .pfp {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .pfp img {
+        width: 80px;
+        height: 80px;
+        object-fit: cover;
+        margin: 5px;
+        border: 1px solid black;
+        border-radius: 50%;
+        overflow: hidden;
+      }
+
+      .name,
+      .occupation,
+      .info {
+        margin: 5px;
+      }
