@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>File Input Btn</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+      }
+
+      #main {
+        width: 100%;
+        height: 100%;
+        background-color: rgb(101, 133, 65);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      input {
+        display: none;
+      }
+      #inputBtn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #inputBtn {
+        padding: 10px;
+        background-color: rgb(255, 176, 64);
+        height: 50px;
+        border: 1px solid black;
+        border-radius: 30px;
+      }
+      #inputBtn:hover {
+        background-color: rgb(254, 197, 117);
+        cursor: pointer;
+      }
+
+      #inputBtn p {
+        font-size: 20px;
+        font-weight: bold;
+        user-select: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="main">
+      <div id="inputBtn">
+        <input id="input" type="file" />
+        <p>Submit File</p>
+      </div>
+    </div>
+    <script>
+      const input = document.querySelector("#input");
+      const inputBtn = document.querySelector("#inputBtn");
+      const p = document.querySelector("p");
+
+      inputBtn.addEventListener("click", () => {
+        input.click();
+      });
+
+      input.addEventListener("change", (e) => {
+        const file = e.target.files[0];
+        console.log(file.name);
+        if (file) p.textContent = file.name;
+      });
+    </script>
+  </body>
+</html>
