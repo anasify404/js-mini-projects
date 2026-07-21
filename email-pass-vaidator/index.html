@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Email & Password Validator</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #f4f4f4;
+      }
+
+      .container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .card {
+        width: 350px;
+        padding: 30px;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
+      }
+
+      .card h1 {
+        text-align: center;
+        margin-bottom: 25px;
+      }
+
+      .input-group {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+      }
+
+      label {
+        margin-bottom: 6px;
+        font-weight: bold;
+      }
+
+      input {
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        outline: none;
+      }
+
+      input:focus {
+        border-color: #4a90e2;
+      }
+
+      small {
+        margin-top: 5px;
+        min-height: 18px;
+        color: red;
+        font-size: 13px;
+      }
+
+      button {
+        width: 100%;
+        padding: 12px;
+        border: none;
+        border-radius: 6px;
+        background: #4a90e2;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        opacity: 0.9;
+      }
+      #log-msg {
+        color: green;
+        font-size: 15px;
+        font-weight: bold;
+        text-align: center;
+        margin-top: 12px;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="card">
+        <h1>Login</h1>
+
+        <form>
+          <div class="input-group">
+            <label>Email</label>
+            <input type="text" id="email" placeholder="Enter your email" />
+            <small id="email-error"></small>
+          </div>
+
+          <div class="input-group">
+            <label>Password</label>
+            <input
+              type="password"
+              id="password"
+              placeholder="Enter your password"
+            />
+            <small id="password-error"></small>
+          </div>
+
+          <button type="submit">Login</button>
+
+          <p id="log-msg">Login Successfully!</p>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      const email = document.querySelector("#email");
+      const emailError = document.querySelector("#email-error");
+      const password = document.querySelector("#password");
+      const passwordError = document.querySelector("#password-error");
+      const form = document.querySelector("form");
+      const logMsg = document.querySelector("#log-msg");
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        emailError.textContent = "";
+        passwordError.textContent = "";
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const passwordRegex =
+          /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+        let emailans = emailRegex.test(email.value);
+        let passans = passwordRegex.test(password.value);
+
+        if (!emailans) {
+          emailError.textContent = "Invalid Email!";
+        }
+        if (!passans) {
+          passwordError.textContent = "Invalid Password!";
+        }
+
+        if (emailans && passans) {
+          logMsg.style.display = "block";
+        } else {
+          logMsg.style.display = "none";
+        }
+        form.reset();
+      });
+    </script>
+  </body>
+</html>
