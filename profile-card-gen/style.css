@@ -23,8 +23,6 @@
         align-items: center;
         justify-content: center;
         flex-direction: column;
-        width: 600px;
-        height: 100%;
         background-color: rgb(72, 154, 176);
         gap: 10px;
       }
