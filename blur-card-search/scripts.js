@@ -80,30 +80,35 @@ const showUsers = (arr) => {
     const p = document.createElement("p");
     p.textContent = user.bio;
 
-    cards.classList.remove("toggle");
+    // cards.classList.remove("toggle");
     content.append(h3, p);
     card.append(img, blur, content);
     cards.append(card);
   });
 };
 
-showUsers(users);
+const notFound = document.querySelector("#noUser");
+notFound.classList.add("toggle");
 
-const noUser = document.querySelector("#noUser");
+showUsers(users);
 
 inp.addEventListener("input", () => {
   const search = inp.value.toLowerCase().trim();
   let newUsers = users.filter((user) => {
     return user.name.toLowerCase().startsWith(search);
   });
+  cards.innerHTML = "";
 
-  if (newUsers) {
-    cards.innerHTML = "";
-    showUsers(newUsers);
-    noUser.classList.add("toggle");
+  if (newUsers.length === 0) {
+    notFound.classList.remove("toggle");
+    console.log("No users");
   } else {
-    cards.classList.add("toggle");
-    noUser.classList.remove("toggle");
+    if (!notFound.classList.contains("toggle")) {
+      notFound.classList.add("toggle");
+      showUsers(newUsers);
+    } else {
+      showUsers(newUsers);
+    }
   }
 });
 
