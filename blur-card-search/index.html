@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blur Card Search</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      body {
+        min-height: 100vh;
+        background: #0f0f0f;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+      }
+
+      input {
+        width: 350px;
+        padding: 16px 20px;
+        border: 2px solid white;
+        outline: none;
+        border-radius: 12px;
+        background: #111;
+        color: #fff;
+        font-size: 16px;
+      }
+
+      input::placeholder {
+        color: #888;
+      }
+
+      .cards {
+        display: flex;
+        gap: 30px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .card {
+        width: 300px;
+        height: 380px;
+        border-radius: 20px;
+        overflow: hidden;
+        position: relative;
+        cursor: pointer;
+      }
+
+      .card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .blurred-layer {
+        position: absolute;
+        inset: 0;
+        backdrop-filter: blur(5px);
+        opacity: 0;
+        transition: 0.3s;
+      }
+
+      .content {
+        position: absolute;
+        bottom: -120px;
+        left: 0;
+        width: 100%;
+        color: white;
+        padding: 20px;
+        transition: 0.35s;
+      }
+
+      .content h3 {
+        margin-bottom: 10px;
+      }
+
+      .card:hover .blurred-layer {
+        opacity: 1;
+      }
+
+      .card:hover .content {
+        bottom: 0;
+      }
+
+      .login {
+        position: absolute;
+        z-index: 999;
+        background-color: black;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-size: 30px;
+        font: 400;
+        flex-direction: column;
+      }
+
+      a {
+        font-size: 20px;
+        position: relative;
+        top: 0;
+        left: 40%;
+        font-weight: 300;
+        cursor: pointer;
+      }
+
+      .login form {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 12px;
+      }
+      form input {
+        background-color: #fff;
+        color: #0f0f0f;
+      }
+      .toggle {
+        display: none;
+      }
+      nav {
+        display: flex;
+        gap: 20px;
+        width: 100%;
+        height: 75px;
+        justify-content: space-around;
+        align-items: center;
+        background-color: rgba(255, 255, 255, 0);
+      }
+      .loginBtn {
+        font-size: 12px;
+        font-weight: bold;
+        width: 80px;
+        height: 40px;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+      }
+
+      .loginBtn:hover {
+        background-color: rgb(146, 144, 144);
+      }
+      .noUser {
+        color: #fff;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div id="login" class="login toggle">
+        <form action="">
+          <a id="homeBtn"><i class="fa-solid fa-house"></i></a>
+          <h3>Add User</h3>
+          <input id="name" type="text" placeholder="Name" />
+          <input id="pic" type="url" placeholder="Picture" />
+          <input id="bio" type="text" placeholder="Bio/About" />
+          <input type="submit" />
+        </form>
+      </div>
+      <nav>
+        <input id="inp" type="text" placeholder="Search..." /><button
+          id="loginBtn"
+          class="loginBtn"
+        >
+          Add User
+        </button>
+      </nav>
+      <div class="noUser" id="noUser">No User Found!</div>
+
+      <div id="cards" class="cards"></div>
+    </div>
+    <script src="scripts.js"></script>
+  </body>
+</html>
