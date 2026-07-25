@@ -88,7 +88,6 @@ const showUsers = (arr) => {
 };
 
 const notFound = document.querySelector("#noUser");
-notFound.classList.add("toggle");
 
 showUsers(users);
 
